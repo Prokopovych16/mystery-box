@@ -1,0 +1,186 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.quiz-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    background: white;
+    padding: 60px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__form {
+    background: white;
+    padding: 60px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    gap: 10px;
+
+    &_title {
+      margin-bottom: 20px;
+    }  
+
+    &_inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+
+      input {
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+        border-radius: 20px;
+        padding: 0 10px;
+        border: none;
+        outline: none;
+        width: 90%;
+        height: 40px;
+
+        @include on-tablet {
+          width: 70%;
+        }
+      }
+
+      button {
+        border-radius: 8px;
+        border: none;
+        width: 200px;
+        height: 50px;
+        background-color: #4caf50;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+
+        @include hover(background-color, #1e8722);
+      }
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+
+
+    &__option {
+      padding: 10px 20px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &--selected {
+        background-color: #4caf50;
+        color: white;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__next {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+
+    &:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
+
+.button-close{
+  display: block;
+  position: absolute;
+  top: -60px;
+  right: 4px;
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  color: #a1905d;
+  border: 1px solid #a1905d;
+  margin: 100px auto;
+  outline: none;
+  border-radius: 90%;
+
+  @include on-tablet {
+    right: 10px;
+  }
+  
+  &:hover{
+    &:before{
+      width: 15px;
+    }
+    
+    &:after{
+      width: 15px;
+    }
+  }
+  
+  &:before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 1px;
+    border-left: 8px solid currentColor;
+    border-right: 8px solid currentColor;
+    transform: translate3d(-50%,-50%,0) rotate(-45deg);
+    transition:  all .2s cubic-bezier(.25,.46,.45,.94);
+  }
+  
+  &:after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 1px;
+    border-left: 8px solid currentColor;
+    border-right: 8px solid currentColor;
+    transform: translate3d(-50%,-50%,0) rotate(45deg);
+    transition:  all .2s cubic-bezier(.25,.46,.45,.94);
+  }
+}

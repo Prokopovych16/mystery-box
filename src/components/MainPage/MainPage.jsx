@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './MainPage.scss';
+import { QuizModal } from '../QuizModal/QuizModal';
 
 export const MainPage = () => {
 
@@ -34,6 +35,13 @@ export const MainPage = () => {
       seconds: Math.floor((difference / 1000) % 60),
     };
   }
+
+
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
+
+  const handleOpenQuiz = () => {
+    setIsQuizOpen(true);
+  };
   return (
     <main className="main">
       <div className="main__paddings container">
@@ -45,12 +53,16 @@ export const MainPage = () => {
               Contest winners will be announced on the first day
               of every month.
             </p>
-            <button className="main__inner_info-button">I want to win!</button>
+            <button onClick={handleOpenQuiz} className="main__inner_info-button">I want to win!</button>
           </div>
           <div className="main__inner_image">
-            <img src='/img/watch.webp' alt="images" />
+            <img src='images/watch.webp' alt="images" />
           </div>
         </div>
+
+        {isQuizOpen && (
+          <QuizModal onClose={() => setIsQuizOpen(false)} />
+        )}
 
         <div className="main__timer">
           <div className="main__timer-countdown">
