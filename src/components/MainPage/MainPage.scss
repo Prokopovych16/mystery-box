@@ -3,17 +3,16 @@
 
 .main {
   background-image: url('../../../public/img/background.svg');
-  background-position: bottom;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: 120%;
-  margin-bottom: 30px;
 
   @include on-tablet {
     margin-bottom: 50px;
   }
 
   @include on-tablet {
-    background-position: right;
+    background-position: top right;
     background-size: 70%;
   }
 
@@ -30,6 +29,7 @@
   }
 
   &__inner {
+    margin-bottom: 50px;
     @include page-grid;
 
     &_info {
@@ -118,6 +118,49 @@
       @include on-desktop {
         grid-column: 17 / 23;
       }
+    }
+  }
+
+  &__timer {
+    margin-bottom: 30px;
+
+    &-countdown {
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 30px;
+
+      @include on-tablet {
+        flex-direction: row;
+      }
+    }
+
+    &-item {
+      border-radius: 10px;
+      padding: 10px 15px;
+      text-align: center;
+      min-width: 100px;
+      
+
+      span:first-of-type {
+        display: block;
+        font-size: 52px;
+        font-weight: 500;
+        color: #503CC3;
+      }
+
+      span:last-of-type {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 12px;
+        color: black;
+      }
+    }
+
+    &_text {
+      text-align: center;
+      font-size: 20px;
     }
   }
 }
