@@ -4,7 +4,7 @@ export const Header = () => {
   return (
     <header className="header">
         <div className="header__inner">
-          <div className="header__inner_logo"><h1>SEPHORA</h1></div>
+          <div className="header__inner_logo"><a href='#123'>SEPHORA</a></div>
         </div>
     </header>
   );

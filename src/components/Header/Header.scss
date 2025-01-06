@@ -9,46 +9,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    &_topText {
-      position: relative;
-      font-weight: 300;
-    
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        width: 50px;
-        height: 0.5px;
-        background-color: black;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-    
-      &::before {
-        left: -70px;
-      }
-    
-      &::after {
-        right: -70px;
-      }
-    }
-    
     &_logo {
       
-      h1 {
+      a {
         font-family: "Rubik", serif;
         font-size: 36px;
         font-weight: 500;
       }
     }
 
-    &_timerText {
-      
-      p {
-        color: #d81007;
-        font-weight: 500;
-      }
-    }
   }
 }
