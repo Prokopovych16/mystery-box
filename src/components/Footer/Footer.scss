@@ -1,0 +1,60 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.footer {
+  text-align: center;
+  padding: 4px 10px;
+
+  &__timer {
+    margin-bottom: 30px;
+
+    &-countdown {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 30px;
+
+      @include on-tablet {
+        flex-direction: row;
+      }
+    }
+
+    &-item {
+      border-radius: 10px;
+      padding: 10px 15px;
+      text-align: center;
+      min-width: 100px;
+      
+
+      span:first-of-type {
+        display: block;
+        font-size: 52px;
+        font-weight: 500;
+        color: #503CC3;
+      }
+
+      span:last-of-type {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 12px;
+        color: black;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+
+    &-text {
+      font-size: 20px;
+    }
+
+    &-rules {
+      font-size: 12px;
+    }
+  }
+}

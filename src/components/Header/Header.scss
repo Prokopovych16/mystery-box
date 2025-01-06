@@ -1,0 +1,57 @@
+@import '../../utils/mixins.scss';
+
+.header {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  // width: 100%;
+  height: fit-content;
+  padding: 16px 0;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+
+    &_topText {
+      position: relative;
+      font-weight: 300;
+    
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 0.5px;
+        background-color: black;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    
+      &::before {
+        left: -70px;
+      }
+    
+      &::after {
+        right: -70px;
+      }
+    }
+    
+    &_logo {
+      
+      h1 {
+        font-family: "Rubik", serif;
+        font-size: 36px;
+        font-weight: 500;
+      }
+    }
+
+    &_timerText {
+      
+      p {
+        color: #d81007;
+        font-weight: 500;
+      }
+    }
+  }
+}
