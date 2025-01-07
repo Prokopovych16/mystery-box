@@ -53,10 +53,33 @@ export const MainPage = () => {
               Contest winners will be announced on the first day
               of every month.
             </p>
+
+            <div className="main__timer-top">
+              <div className="main__timer-countdown">
+                <div className="main__timer-item">
+                  <span className="main__timer-item-time">{timeLeft.days}</span>
+                  <span className="main__timer-item-text">Days</span>
+                </div>
+                <div className="main__timer-item">
+                  <span>{timeLeft.hours}</span>
+                  <span>Hours</span>
+                </div>
+                <div className="main__timer-item">
+                  <span>{timeLeft.minutes}</span>
+                  <span>Minutes</span>
+                </div>
+                <div className="main__timer-item">
+                  <span>{timeLeft.seconds}</span>
+                  <span>Seconds</span>
+                </div>
+              </div>
+              <p className="main__timer_text">until the contest ends!</p>
+            </div>
+
             <button onClick={handleOpenQuiz} className="main__inner_info-button">I want to win!</button>
           </div>
           <div className="main__inner_image">
-            <img src='images/watch.webp' alt="images" />
+            <img src="img/watch.webp" alt="images" />
           </div>
         </div>
 

@@ -2,8 +2,8 @@
 @import '../../utils/vars.scss';
 
 .main {
-  background-image: url('../../../public/images/background.svg');
-  background-position: center;
+  background-image: url('../../../public/img/background.svg');
+  background-position: bottom;
   background-repeat: no-repeat;
   background-size: 120%;
 
@@ -66,6 +66,7 @@
         border: none;
         padding: 10px 0;
         font-weight: 600;
+        font-size: 16px;
         background-color: rgb(239, 36, 222);
         color: #fff;
         cursor: pointer;
@@ -123,16 +124,31 @@
 
   &__timer {
     margin-bottom: 30px;
+    display: none;
+
+    &-top {
+      margin-bottom: 16px;
+      display: block;
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    @include on-tablet {
+      display: block;
+    }
 
     &-countdown {
-      margin-bottom: 30px;
+      margin-bottom: 5px;
       display: flex;
       justify-content: center;
-      flex-direction: column;
-      gap: 30px;
+      flex-direction: row;
 
       @include on-tablet {
         flex-direction: row;
+        gap: 30px;
+        margin-bottom: 30px;
       }
     }
 
@@ -140,21 +156,33 @@
       border-radius: 10px;
       padding: 10px 15px;
       text-align: center;
-      min-width: 100px;
+      min-width: 56px;
+
+      @include on-tablet {
+        min-width: 100px;
+      }
       
 
       span:first-of-type {
         display: block;
-        font-size: 52px;
+        font-size: 32px;
         font-weight: 500;
         color: #503CC3;
+
+        @include on-tablet {
+          font-size: 52px;
+        }
       }
 
       span:last-of-type {
         text-transform: uppercase;
         font-weight: 600;
-        font-size: 12px;
+        font-size: 10px;
         color: black;
+
+        @include on-tablet {
+          font-size: 12px;
+        }
       }
     }
 
