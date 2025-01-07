@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/mystery-box/static/css/main.d3feead2.css",
+    "main.css": "/mystery-box/static/css/main.b71e20fd.css",
     "main.js": "/mystery-box/static/js/main.199c35b5.js",
     "static/media/background.svg": "/mystery-box/static/media/background.48ad45482150bad7bd26.svg",
     "index.html": "/mystery-box/index.html",
-    "main.d3feead2.css.map": "/mystery-box/static/css/main.d3feead2.css.map",
+    "main.b71e20fd.css.map": "/mystery-box/static/css/main.b71e20fd.css.map",
     "main.199c35b5.js.map": "/mystery-box/static/js/main.199c35b5.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3feead2.css",
+    "static/css/main.b71e20fd.css",
     "static/js/main.199c35b5.js"
   ]
 }
