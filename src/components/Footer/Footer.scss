@@ -2,6 +2,7 @@
 @import '../../utils/vars.scss';
 
 .footer {
+  position: relative;
   margin-top: auto; 
   padding: 2px 0;
 
@@ -9,10 +10,6 @@
     text-align: center;
     font-size: 12px;
   }
-
-  @include on-tablet {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
 }
+
+

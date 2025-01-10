@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import questions from '../../api/questions.json'; // JSON з питаннями
 import './QuizModal.scss';
+import translations from '../../api/languages.json';
 
-export const QuizModal = ({ onClose }) => {
+export const QuizModal = ({ chosenLanguage, onClose }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
-  const [responses, setResponses] = useState({});
+  const [isFormTouched, setIsFormTouched] = useState(false);
+  const language = translations[chosenLanguage];
 
+  const [responses, setResponses] = useState({});
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
@@ -29,48 +32,49 @@ export const QuizModal = ({ onClose }) => {
         email: '',
         phone: '',
       };
-  
+
       // ім'я: мінімум 2, максимум 25 символів
       if (name.length < 2 || name.length > 25) {
-        newErrors.name = 'Name must be between 2 and 25 characters.';
+        newErrors.name = language.errorName;
       }
-  
+
       // прізвище: мінімум 2, максимум 25 символів
       if (surname.length < 2 || surname.length > 25) {
-        newErrors.surname = 'Surname must be between 2 and 25 characters.';
+        newErrors.surname = language.errorSurName;
       }
-  
+
       // пошта: паттерн на email
       const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (!emailPattern.test(email)) {
-        newErrors.email = 'Enter a valid email address.';
+        newErrors.email = language.errorEmail;
       }
-  
+
       // телефон: мінімум 6, максимум 15 символів
       if (phone.length < 6 || phone.length > 15) {
-        newErrors.phone = 'Phone number must be between 6 and 15 characters.';
+        newErrors.phone = language.errorPhone;
       }
-  
+
       setErrors(newErrors);
-  
+
       // перевірка чи є помилки
       return !Object.values(newErrors).some((error) => error !== '');
     };
-  
-    const isValid = validateForm();
-    setIsFormValid(isValid);
-  }, [name, surname, email, phone]);
-  
+
+    if (isFormTouched) {
+      const isValid = validateForm();
+      setIsFormValid(isValid);
+    }
+  }, [name, surname, email, phone, isFormTouched, language.errorName, language.errorSurName, language.errorEmail, language.errorPhone]);
 
   const question = questions[currentQuestionIndex];
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
 
-    setResponses({
-      ...responses,
-      [question.question]: option,
-    });
+    setResponses((prevResponses) => ({
+      ...prevResponses,
+      [question.question['en']]: option,
+    }));
 
     if (currentQuestionIndex + 1 < questions.length) {
       setTimeout(() => {
@@ -83,47 +87,112 @@ export const QuizModal = ({ onClose }) => {
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
   
     if (isFormValid) {
-      console.log('Form submitted:', { name, surname, email, phone, responses });
-
+      const data = {
+        name,
+        surname,
+        email,
+        phone,
+        answers: JSON.stringify(responses), 
+      };
+  
+      try {
+        // link для php
+        const response = await fetch('http://localhost:8888/mystery-box/public/data_proccesing.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams(data),
+        });
+  
+        if (response.ok) {
+          const result = await response.text();
+          console.log('Відповідь сервера:', result);
+          alert(`PHP відповів: ${result}`);
+        } else {
+          console.error('Помилка при відправці даних:', response.statusText);
+          alert('Помилка на сервері!');
+        }
+      } catch (error) {
+        console.error('Помилка мережі:', error);
+        alert('Не вдалося зв’язатися із сервером!');
+      }
+      
       setName('');
       setSurname('');
       setEmail('');
       setPhone('');
       setResponses({});
+      onClose();
     }
   };
   
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setIsFormTouched(true);
+
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'surname':
+        setSurname(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'phone':
+        setPhone(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+
   return (
-    <div className="quiz-modal">
+    <div 
+      className="quiz-modal"
+      onClick={(e) => {
+        // Перевіряємо, чи натискання відбулося поза quiz-modal__content або quiz-modal__form
+        if (!e.target.closest('.quiz-modal__content') && !e.target.closest('.quiz-modal__form')) {
+          onClose();
+        }
+      }}
+    >
       {!isFormOpen ? (
         <div className="quiz-modal__content">
-          <h2>{question.question}</h2>
-          <div className="quiz-modal__options">
-            {question.options.map((option, index) => (
-              <button
-                key={index}
-                className={`quiz-modal__options__option ${selectedOption === option ? 'quiz-modal__options__option--selected' : ''
-                  }`}
-                onClick={() => handleOptionClick(option)}
-              >
-                {option}
-              </button>
-            ))}
-          </div>
+        <h2>{question.question[chosenLanguage]}</h2>
+        <div className="quiz-modal__options">
+          {question.options[chosenLanguage].map((option, index) => (
+            <button
+              key={index}
+              className={`quiz-modal__options__option ${
+                selectedOption === option
+                  ? 'quiz-modal__options__option--selected'
+                  : ''
+              }`}
+              onClick={() => handleOptionClick(option)} 
+            >
+              {option}
+            </button>
+          ))}
         </div>
+      </div>
       ) : (
         <div className="quiz-modal__form">
-          <h2 className="quiz-modal__form_title">Sign up</h2>
+          <h2 className="quiz-modal__form_title">{language.sign}</h2>
           <form className="quiz-modal__form_inner" onSubmit={handleSubmit}>
             <div className="quiz-modal__form_group">
-              <label htmlFor="name">First Name</label>
+              <label htmlFor="name">{language.fName}</label>
               <input
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={handleInputChange}
                 placeholder="Robert"
                 type="text"
                 name="name"
@@ -133,10 +202,10 @@ export const QuizModal = ({ onClose }) => {
               {errors.name && <p className="error">{errors.name}</p>}
             </div>
             <div className="quiz-modal__form_group">
-              <label htmlFor="surname">Last Name</label>
+              <label htmlFor="surname">{language.lName}</label>
               <input
                 value={surname}
-                onChange={(e) => setSurname(e.target.value)}
+                onChange={handleInputChange}
                 placeholder="Kawosaki"
                 type="text"
                 name="surname"
@@ -146,10 +215,10 @@ export const QuizModal = ({ onClose }) => {
               {errors.surname && <p className="error">{errors.surname}</p>}
             </div>
             <div className="quiz-modal__form_group">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">{language.email}</label>
               <input
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleInputChange}
                 placeholder="example@gmail.com"
                 type="email"
                 name="email"
@@ -159,10 +228,10 @@ export const QuizModal = ({ onClose }) => {
               {errors.email && <p className="error">{errors.email}</p>}
             </div>
             <div className="quiz-modal__form_group">
-              <label htmlFor="phone">Phone Number</label>
+              <label htmlFor="phone">{language.phone}</label>
               <input
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={handleInputChange}
                 placeholder="+1 (234) 567-8901"
                 type="tel"
                 name="phone"
@@ -177,7 +246,7 @@ export const QuizModal = ({ onClose }) => {
                 }`}
               disabled={!isFormValid}
             >
-              Submit
+              {language.submit}
             </button>
           </form>
         </div>

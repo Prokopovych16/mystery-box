@@ -27,7 +27,7 @@
 
   &__form {
     background: white;
-    padding: 60px 0;
+    padding: 60px 4px;
     border-radius: 8px;
     width: 90%;
     max-width: 500px;
@@ -50,6 +50,7 @@
     }
 
     &_group {
+      position: relative;
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -170,6 +171,7 @@
   margin: 100px auto;
   outline: none;
   border-radius: 90%;
+  cursor: pointer;
 
   @include on-tablet {
     right: 10px;

@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "fullName": "Louis",
+    "timePosted": "2025-01-08T14:30:00Z",
+    "photo": "img/photosOfPeople/photoPerson3.jpg",
+    "likes": 15,
+    "dislikes": 0,
+    "text": "Brooo, I can’t believe I just won iPhone 16 Pro Max for 2 euros! Legit thought these things were scams. Best day EVER!",
+    "rating": 5,
+    "totalVotes": 18,
+    "uploadedPhotos": [
+      "img/userUploads/photo1.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "fullName": "Rohan",
+    "timePosted": "2025-01-08T15:00:00Z",
+    "photo": "img/photosOfPeople/photoPerson1.jpeg",
+    "likes": 8,
+    "dislikes": 0,
+    "text": "OMG, just got my PS5 Pro from the draw! I’m shook. Thanks a million, you guys rock!",
+    "rating": 5,
+    "totalVotes": 9,
+    "uploadedPhotos": [
+      "img/userUploads/photo2.png"
+    ]
+  },
+  {
+    "id": 3,
+    "fullName": "Sonya GG",
+    "timePosted": "2024-01-08T15:30:00Z",
+    "photo": "img/photosOfPeople/photoPerson2.jpg",
+    "likes": 20,
+    "dislikes": 0,
+    "text": "No way!!!! I actually won a MacBook M4",
+    "rating": 5,
+    "totalVotes": 20,
+    "uploadedPhotos": [
+      "img/userUploads/photo3.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "fullName": "Emma",
+    "timePosted": "2024-01-08T15:30:00Z",
+    "photo": "img/photosOfPeople/photoPerson4.jpeg",
+    "likes": 32,
+    "dislikes": 0,
+    "text": "I entered for fun and now I’m holding an iPhone 16 Pro Max!",
+    "rating": 5,
+    "totalVotes": 20,
+    "uploadedPhotos": [
+      "img/userUploads/photo4.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "fullName": "Emmanuel",
+    "timePosted": "2024-01-08T15:30:00Z",
+    "photo": "img/photosOfPeople/photoPerson5.jpg",
+    "likes": 32,
+    "dislikes": 0,
+    "text": "I thought my luck was trash, but I just won a MacBook M3. Best 2 euros I ever spent!",
+    "rating": 5,
+    "totalVotes": 20,
+    "uploadedPhotos": [
+      "img/userUploads/photo5.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "fullName": "Ryana",
+    "timePosted": "2024-01-08T15:30:00Z",
+    "photo": "img/photosOfPeople/photoPerson6.jpeg",
+    "likes": 32,
+    "dislikes": 0,
+    "text": "AirPods max, baby! I’m telling everyone about this. You gotta be in it to win it!",
+    "rating": 5,
+    "totalVotes": 20,
+    "uploadedPhotos": [
+      "img/userUploads/photo6.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "fullName": "Mia Ron",
+    "timePosted": "2024-01-08T15:30:00Z",
+    "photo": "img/photosOfPeople/photoPerson7.avif",
+    "likes": 32,
+    "dislikes": 0,
+    "text": "For 2 euros I got a freaking iPhone 16 Pro Max. This is amazing!",
+    "rating": 5,
+    "totalVotes": 20,
+    "uploadedPhotos": [
+      "img/userUploads/photo7.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "fullName": "Matteo",
+    "timePosted": "2024-01-08T15:30:00Z",
+    "photo": "img/photosOfPeople/photoPerson8.jpeg",
+    "likes": 32,
+    "dislikes": 0,
+    "text": "I was skeptical, but here I am with a brand new iPhone 16 pro. Trust the process, guys!",
+    "rating": 5,
+    "totalVotes": 20,
+    "uploadedPhotos": [
+      "img/userUploads/photo8.jpg"
+    ]
+  }
+]

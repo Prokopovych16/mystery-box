@@ -1,20 +1,53 @@
 [
   {
     "id": 1,
-    "question": "What is the capital of France?",
-    "options": ["Paris", "London", "Berlin", "Madrid"],
-    "answer": "Paris"
+    "question": {
+      "en": "How did you hear about us?",
+      "fr": "Comment avez-vous entendu parler de nous ?",
+      "es": "¿Cómo nos conociste?",
+      "pl": "Skąd dowiedziałeś się o nas?",
+      "de": "Wie haben Sie von uns erfahren?"
+    },
+    "options": {
+      "en": ["Instagram", "Facebook", "Twitter", "Reddit", "Other"],
+      "fr": ["Instagram", "Facebook", "Twitter", "Reddit", "Autre"],
+      "es": ["Instagram", "Facebook", "Twitter", "Reddit", "Otro"],
+      "pl": ["Instagram", "Facebook", "Twitter", "Reddit", "Inne"],
+      "de": ["Instagram", "Facebook", "Twitter", "Reddit", "Andere"]
+    }
   },
   {
     "id": 2,
-    "question": "What is 2 + 2?",
-    "options": ["3", "4", "5", "6"],
-    "answer": "4"
+    "question": {
+      "en": "How old are you?",
+      "fr": "Quel âge avez-vous ?",
+      "es": "¿Cuántos años tienes?",
+      "pl": "Ile masz lat?",
+      "de": "Wie alt bist du?"
+    },
+    "options": {
+      "en": ["Under 18", "18–25", "26–35", "36–45", "46+"],
+      "fr": ["Moins de 18", "18–25", "26–35", "36–45", "46+"],
+      "es": ["Menos de 18", "18–25", "26–35", "36–45", "46+"],
+      "pl": ["Mniej niż 18", "18–25", "26–35", "36–45", "46+"],
+      "de": ["Unter 18", "18–25", "26–35", "36–45", "46+"]
+    }
   },
   {
     "id": 3,
-    "question": "Which planet is known as the Red Planet?",
-    "options": ["Earth", "Mars", "Jupiter", "Venus"],
-    "answer": "Mars"
+    "question": {
+      "en": "Have you purchased from us before?",
+      "fr": "Avez-vous déjà acheté chez nous ?",
+      "es": "¿Has comprado algo de nosotros antes?",
+      "pl": "Czy kupowałeś u nas wcześniej?",
+      "de": "Haben Sie schon einmal bei uns gekauft?"
+    },
+    "options": {
+      "en": ["Yes", "No, but planning to", "No, and not planning yet", "Venus"],
+      "fr": ["Oui", "Non, mais je prévois de le faire", "Non, et je n'ai pas encore de projet", "Vénus"],
+      "es": ["Sí", "No, pero planeo hacerlo", "No, y no lo planeo aún", "Venus"],
+      "pl": ["Tak", "Nie, ale planuję to zrobić", "Nie, i na razie nie planuję", "Wenus"],
+      "de": ["Ja", "Nein, aber ich plane es", "Nein, und noch nicht geplant", "Venus"]
+    }
   }
 ]

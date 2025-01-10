@@ -4,19 +4,102 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   height: fit-content;
   padding: 10px 0;
+  position: relative;
 
   &__inner {
     display: flex;
     justify-content: center;
     align-items: center;
     &_logo {
+      margin: 0 auto;
       
       a {
         font-family: "Rubik", serif;
         font-size: 36px;
         font-weight: 500;
       }
+
+      &_img {
+        height: 70px;
+      }
     }
 
+  }
+}
+
+.language-switcher {
+  position: absolute;
+  right: 10px;
+  display: inline-block;
+
+  .current-language {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    // border: 0.5px solid;
+    // border-color: #a2a2a2;
+
+    &:hover {
+      background-color: #eaeaea;
+    }
+
+    &-flag {
+      width: 30px;
+    }
+
+    &-vector {
+      width: 16px;
+      display: none;
+
+      @include on-tablet {
+        display: block;
+      }
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 10;
+
+    /* Спочатку меню приховане */
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+
+    &.open {
+      max-height: 500px; /* Максимальна висота (достатньо велика для всіх пунктів) */
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #f4f4f4;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
 }
