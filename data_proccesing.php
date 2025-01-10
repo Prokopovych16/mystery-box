@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $click_id = $_POST['external_id'];
-// $nameDocument = $_POST['title_name'] ?? "DEFAULT";
+$nameDocument = $_POST['title_name'] ?? "DEFAULT";
 $firstName = $firstNameForm ?? "ERROR";
 $lastName = $lastNameForm ?? "ERROR";
 $email = $emailForm ?? "error@gmail.com";
@@ -35,7 +35,7 @@ $pxlt = $_POST['pixel'] ?? "pxlt";
 $pxlg = $_POST['pxlg'] ?? "pxlg";
 $pxlm = $_POST['pixel'] ?? 877087;
 $pixel = $_POST['pixel'];
-// $nameDocument = $_POST['title_name'];
+$nameDocument = $_POST['title_name'];
 
 echo 'name', $firstName;
 echo 'surname', $lastName;
